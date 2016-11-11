@@ -28,8 +28,8 @@ To install this dissector, please read [README.plugins](https://code.wireshark.o
    * CMakeLists.txt
    * Makefile.am
    * moduleinfo.h
-   * packer-mpi.c
-   * packer-mpi.h
+   * packet-mpi.c
+   * packet-mpi.h
    * plugin.rc.in
 
 3. Changes to existing Wireshark files (e.g. see section `3.2 Permanent addition` in the readme file)  <br />
