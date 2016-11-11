@@ -111,22 +111,10 @@ To install this dissector, please read [README.plugins](https://code.wireshark.o
    ```
  3.6. Changes to the installers   <br />
  If you want to include your plugin in an installer you have to change following files:
-	 * packaging/nsis/Makefile.nmake
 	 * packaging/nsis/wireshark.nsi
 
-  3.6.1. Changes to packaging/nsis/Makefile.nmake
-   
-   ```
-   PLUGINS= \                           
-      ../../plugins/docsis/docsis.dll \
-      ...
-      ../../plugins/mate/mate.dll \
-      ../../plugins/mpi/mpi.dll \    
-      ../../plugins/opcua/opcua.dll \
-      ...
-   ```
 
-  3.6.2. Changes to packaging/nsis/wireshark.nsi
+  3.6.1. Changes to packaging/nsis/wireshark.nsi
 
    ```
    Section "Dissector Plugins" SecPlugins             
