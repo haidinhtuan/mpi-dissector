@@ -2,7 +2,7 @@
 
 This [Wireshark](https://www.wireshark.org/) Plugin dissect the general [Open MPI](http://www.open-mpi.org/) TCP-Traffic.
 
-Please note: It is a proof of concept plugin with no claim to completeness! Usage at your own risk! It was only tested on a Linux machine with `Wireshark 1.99.2` and `Open MPI 1.8.4`.
+Please note: It is a proof of concept plugin with no claim to completeness! Usage at your own risk! It was only tested on a Linux machine with `Wireshark 2.2.1` and `Open MPI 2.0.1`.
 
 ## Table of Contents
 
@@ -27,10 +27,7 @@ To install this dissector, please read [README.plugins](https://code.wireshark.o
    * ChangeLog
    * CMakeLists.txt
    * Makefile.am
-   * Makefile.common
-   * Makefile.nmake
    * moduleinfo.h
-   * moduleinfo.nmake
    * packer-mpi.c
    * packer-mpi.h
    * plugin.rc.in
@@ -42,10 +39,9 @@ To install this dissector, please read [README.plugins](https://code.wireshark.o
 	  * CMakeLists.txt
 	  * epan/Makefile.am
 	  * Makefile.am
-	  * packaging/nsis/Makefile.nmake
 	  * packaging/nsis/wireshark.nsi
 	  * plugins/Makefile.am
-	  * plugins/Makefile.nmake
+
 
  3.1. Changes to plugins/Makefile.am
    
@@ -58,19 +54,9 @@ To install this dissector, please read [README.plugins](https://code.wireshark.o
       opcua \
       ...
    ```
- 3.2. Changes to plugins/Makefile.nmake
+
    
-   ```
-   PLUGIN_LIST = \
-      docsis      \
-      ...
-      mate        \
-      mpi         \
-      opcua       \
-      ...
-   ```
-   
- 3.3. Changes to the top level Makefile.am
+ 3.2. Changes to the top level Makefile.am
 
    ```
    if HAVE_PLUGINS
@@ -84,7 +70,7 @@ To install this dissector, please read [README.plugins](https://code.wireshark.o
       ...
    ```
    
- 3.4. Changes to the top level configure.ac
+ 3.3. Changes to the top level configure.ac
 
    ```
    AC_CONFIG_HEADERS(config.h)
@@ -97,7 +83,7 @@ To install this dissector, please read [README.plugins](https://code.wireshark.o
       ...
    ```
    
- 3.5. Changes to epan/Makefile.am
+ 3.4. Changes to epan/Makefile.am
 
    ```
    if ENABLE_STATIC
@@ -110,7 +96,7 @@ To install this dissector, please read [README.plugins](https://code.wireshark.o
       ../plugins/wimax/crc.c \
       ...
    ```
- 3.6. Changes to CMakeLists.txt
+ 3.5. Changes to top level CMakeLists.txt
 
    ```
    if(ENABLE_PLUGINS)
@@ -123,12 +109,12 @@ To install this dissector, please read [README.plugins](https://code.wireshark.o
          plugins/opcua
          ...
    ```
- 3.7. Changes to the installers   <br />
+ 3.6. Changes to the installers   <br />
  If you want to include your plugin in an installer you have to change following files:
 	 * packaging/nsis/Makefile.nmake
 	 * packaging/nsis/wireshark.nsi
 
-  3.7.1. Changes to packaging/nsis/Makefile.nmake
+  3.6.1. Changes to packaging/nsis/Makefile.nmake
    
    ```
    PLUGINS= \                           
@@ -140,7 +126,7 @@ To install this dissector, please read [README.plugins](https://code.wireshark.o
       ...
    ```
 
-  3.7.2. Changes to packaging/nsis/wireshark.nsi
+  3.6.2. Changes to packaging/nsis/wireshark.nsi
 
    ```
    Section "Dissector Plugins" SecPlugins             
