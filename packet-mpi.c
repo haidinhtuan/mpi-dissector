@@ -2122,13 +2122,13 @@ dissect_mpi_rndvrestartnotify(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tre
                 offset, 8, byte_order);
         offset += 8;
         proto_tree_add_item(mpi_rndvrestartnotify_tree, hf_mpi_dst_vpid, tvb,
-                offset, 4, ENC_LITTLE_ENDIAN);
+                offset, 4, byte_order);
         offset += 4;
         proto_tree_add_item(mpi_rndvrestartnotify_tree, hf_mpi_jobid, tvb,
                 offset, 4, byte_order);
         offset += 4;
         proto_tree_add_item(mpi_rndvrestartnotify_tree, hf_mpi_vpid, tvb,
-                offset, 4, ENC_LITTLE_ENDIAN);
+                offset, 4, byte_order);
         offset += 4;
 
         proto_item_append_text(ti,
