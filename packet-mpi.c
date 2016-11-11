@@ -926,13 +926,13 @@ dissect_mpi_oob(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree, guint the_o
                         offset, 4, ENC_BIG_ENDIAN);
                 offset += 4;
                 proto_tree_add_item(mpi_oob_tree, hf_mpi_oob_hdr_vpid_origin, tvb,
-                        offset, 4, ENC_BIG_ENDIAN);
+                        offset, 4, ENC_LITTLE_ENDIAN);
                 offset += 4;
                 proto_tree_add_item(mpi_oob_tree, hf_mpi_oob_hdr_jobid_dst, tvb,
                         offset, 4, ENC_BIG_ENDIAN);
                 offset += 4;
                 proto_tree_add_item(mpi_oob_tree, hf_mpi_oob_hdr_vpid_dst, tvb,
-                        offset, 4, ENC_BIG_ENDIAN);
+                        offset, 4, ENC_LITTLE_ENDIAN);
                 offset += 4;
                 proto_tree_add_item(mpi_oob_tree, hf_mpi_oob_hdr_msg_type, tvb,
                         offset, 4, ENC_BIG_ENDIAN);
@@ -2122,13 +2122,13 @@ dissect_mpi_rndvrestartnotify(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tre
                 offset, 8, byte_order);
         offset += 8;
         proto_tree_add_item(mpi_rndvrestartnotify_tree, hf_mpi_dst_vpid, tvb,
-                offset, 4, byte_order);
+                offset, 4, ENC_LITTLE_ENDIAN);
         offset += 4;
         proto_tree_add_item(mpi_rndvrestartnotify_tree, hf_mpi_jobid, tvb,
                 offset, 4, byte_order);
         offset += 4;
         proto_tree_add_item(mpi_rndvrestartnotify_tree, hf_mpi_vpid, tvb,
-                offset, 4, byte_order);
+                offset, 4, ENC_LITTLE_ENDIAN);
         offset += 4;
 
         proto_item_append_text(ti,
@@ -2704,7 +2704,7 @@ proto_reg_handoff_mpi(void)
         g_print("proto_reg_handoff_mpi\n");
 
     if (!initialized) {
-        mpi_handle = new_create_dissector_handle(dissect_mpi, proto_mpi);
+        mpi_handle = create_dissector_handle(dissect_mpi, proto_mpi);
         initialized = TRUE;
 
     } else {
