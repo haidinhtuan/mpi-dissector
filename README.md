@@ -27,6 +27,7 @@ To install this dissector, please read [README.plugins](https://code.wireshark.o
    * ChangeLog
    * CMakeLists.txt
    * Makefile.am
+   * Makefile.common
    * moduleinfo.h
    * packet-mpi.c
    * packet-mpi.h
@@ -73,9 +74,12 @@ To install this dissector, please read [README.plugins](https://code.wireshark.o
  3.3. Changes to the top level configure.ac
 
    ```
-   AC_CONFIG_HEADERS(config.h)
-   AC_OUTPUT(
+   AC_CONFIG_FILES(
       Makefile
+      doxygen.cfg
+      epan/dissectors/asn1/Makefile
+      wireshark.pc
+      _CUSTOM_ASN1_AC_OUTPUT_
       ...
       plugins/mate/Makefile
       plugins/mpi/Makefile
